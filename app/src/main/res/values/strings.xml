@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Messenger</string>
+    <string name="messenger">Messenger</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="accountAlreadyExists">Already have an account?</string>
+    <string name="login">Login</string>
+    <string name="noAccountExists">Don\'t have an Account? Register here!</string>
 </resources>

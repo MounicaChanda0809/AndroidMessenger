@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gridSizeQuart">4dp</dimen>
+    <dimen name="gridSizeHalf">8dp</dimen>
+    <dimen name="gridSize">16dp</dimen>
+    <dimen name="gridSizeDouble">32dp</dimen>
+    <dimen name="gridSizeQuad">64dp</dimen>
+    <dimen name="horizontalBaseline">28dp</dimen>
+</resources>
