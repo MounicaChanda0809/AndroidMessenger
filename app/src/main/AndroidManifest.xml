@@ -19,4 +19,6 @@
         <activity android:name=".LoginActivity"/>
     </application>
 
+    <uses-permission android:name="android.Manifest.permission.READ_EXTERNAL_STORAGE"/>
+
 </manifest>
