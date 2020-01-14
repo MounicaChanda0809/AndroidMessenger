@@ -8,4 +8,5 @@
     <string name="accountAlreadyExists">Already have an account?</string>
     <string name="login">Login</string>
     <string name="noAccountExists">Don\'t have an Account? Register here!</string>
+    <string name="selectPhoto">Select Photo</string>
 </resources>
