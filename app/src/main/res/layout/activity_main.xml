@@ -19,6 +19,7 @@
         app:srcCompat="@drawable/logo"
         tools:ignore="VectorDrawableCompat" />
 
+    <!--
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
         android:textAppearance="@style/AppTheme.TextAppearance.Header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" /> -->
 
     <TextView
         android:id="@+id/registerTextView"
@@ -41,7 +42,24 @@
         android:textAppearance="@style/AppTheme.TextAppearance.Subheader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTextView" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+   <TextView
+        android:id="@+id/profilePictureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gridSize"
+        android:layout_marginTop="@dimen/gridSize"
+        android:padding="22dp"
+        android:text="@string/selectPhoto"
+        android:background="@drawable/rounded_button"
+        android:textColor="@color/white"
+        android:textAppearance="@style/AppTheme.TextAppearance.Label"
+        android:drawableTop="@drawable/camera"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView"
+        tools:ignore="RtlSymmetry" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/userNameTextInputLayout"
@@ -54,13 +72,12 @@
         android:hint="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextView">
+        app:layout_constraintTop_toBottomOf="@+id/profilePictureTextView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userNameEditText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress" />
+            android:layout_height="wrap_content" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -103,7 +120,7 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
