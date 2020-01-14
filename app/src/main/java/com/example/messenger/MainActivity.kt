@@ -2,10 +2,8 @@ package com.example.messenger
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.provider.MediaStore.Images.Media.getBitmap
 import android.util.Log
 import android.widget.Toast
@@ -14,8 +12,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
-import java.net.URL
-import java.util.*
+import java.util.UUID
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,14 +46,14 @@ class MainActivity : AppCompatActivity() {
            // Log.d("*************", "Photo Selected")
             selectedPhotoUri = data.data
             val bitmap = getBitmap(contentResolver, selectedPhotoUri)
-            profilePictureTextView.setBackgroundDrawable(BitmapDrawable(bitmap))
+            selectProfilePictureImage.setImageBitmap(bitmap)
+            profilePictureTextView.alpha = 0f
         }
     }
 
     private fun performRegister() {
         val email = emailEditText.text.toString()
         val password = passwordEditText.text.toString()
-
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please enter text in email and password", Toast.LENGTH_LONG)
                 .show()
@@ -73,7 +70,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d("FIREBASE", "Failed to create user : ${it.message}")
                 Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_LONG)
                     .show()
-
             }
     }
 
@@ -100,7 +96,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d("MainActivity", "Successfully added user to firebase database")
             }
         }
-
     }
 }
 

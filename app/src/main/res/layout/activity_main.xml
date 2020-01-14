@@ -44,23 +44,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profilePictureCardView"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        app:cardCornerRadius="100dp"
+    <TextView
+         android:id="@+id/profilePictureTextView"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_marginStart="@dimen/gridSize"
+         android:layout_marginTop="@dimen/gridSize"
+         android:padding="22dp"
+         android:text="@string/selectPhoto"
+         android:background="@drawable/rounded_button"
+         android:textColor="@color/white"
+         android:textAppearance="@style/AppTheme.TextAppearance.Label"
+         android:drawableTop="@drawable/camera"
+         app:layout_constraintEnd_toEndOf="parent"
+         app:layout_constraintStart_toStartOf="parent"
+         app:layout_constraintTop_toBottomOf="@+id/registerTextView"
+         tools:ignore="RtlSymmetry" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/selectProfilePictureImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="@dimen/gridSize"
+        android:layout_marginTop="@dimen/gridSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextView">
-
-        <ImageView
-            android:id="@+id/rounded_image_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/flash" />
-
-    </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/userNameTextInputLayout"
@@ -73,7 +82,7 @@
         android:hint="@string/username"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePictureCardView">
+        app:layout_constraintTop_toBottomOf="@+id/profilePictureTextView">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/userNameEditText"
@@ -121,7 +130,7 @@
             android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"/>
+            android:inputType="textPassword" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
