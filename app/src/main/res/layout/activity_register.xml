@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -45,21 +45,21 @@
         app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <TextView
-         android:id="@+id/profilePictureTextView"
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:layout_marginStart="@dimen/gridSize"
-         android:layout_marginTop="@dimen/gridSize"
-         android:padding="22dp"
-         android:text="@string/selectPhoto"
-         android:background="@drawable/rounded_button"
-         android:textColor="@color/white"
-         android:textAppearance="@style/AppTheme.TextAppearance.Label"
-         android:drawableTop="@drawable/camera"
-         app:layout_constraintEnd_toEndOf="parent"
-         app:layout_constraintStart_toStartOf="parent"
-         app:layout_constraintTop_toBottomOf="@+id/registerTextView"
-         tools:ignore="RtlSymmetry" />
+        android:id="@+id/profilePictureTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gridSize"
+        android:layout_marginTop="@dimen/gridSize"
+        android:background="@drawable/rounded_button"
+        android:drawableTop="@drawable/camera"
+        android:padding="22dp"
+        android:text="@string/selectPhoto"
+        android:textAppearance="@style/AppTheme.TextAppearance.Label"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView"
+        tools:ignore="RtlSymmetry" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/selectProfilePictureImage"
@@ -69,7 +69,7 @@
         android:layout_marginTop="@dimen/gridSize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registerTextView"/>
+        app:layout_constraintTop_toBottomOf="@+id/registerTextView" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/userNameTextInputLayout"

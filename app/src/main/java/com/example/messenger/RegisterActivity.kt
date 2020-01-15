@@ -11,19 +11,19 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_register.*
 import java.util.UUID
 
-class MainActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
     private var selectedPhotoUri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_register)
 
         registerButton.setOnClickListener {
-        performRegister()
+            performRegister()
         }
 
         profilePictureTextView.setOnClickListener {
@@ -42,8 +42,8 @@ class MainActivity : AppCompatActivity() {
     @Suppress("DEPRECATION")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 0 && resultCode.equals(Activity.RESULT_OK) && data != null) {
-           // Log.d("*************", "Photo Selected")
+        if (requestCode == 0 && resultCode == Activity.RESULT_OK && data != null) {
+            // Log.d("*************", "Photo Selected")
             selectedPhotoUri = data.data
             val bitmap = getBitmap(contentResolver, selectedPhotoUri)
             selectProfilePictureImage.setImageBitmap(bitmap)
@@ -63,23 +63,23 @@ class MainActivity : AppCompatActivity() {
         FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener {
                 if (!it.isSuccessful) return@addOnCompleteListener
-                Log.d("MainActivity", "Successfully created user : ${it.result?.user?.uid}")
+                Log.d(LOG_TAG, "Successfully created user : ${it.result?.user?.uid}")
                 uploadImageToFirebase()
             }
             .addOnFailureListener {
-                Log.d("FIREBASE", "Failed to create user : ${it.message}")
+                Log.d(LOG_TAG, "Failed to create user : ${it.message}")
                 Toast.makeText(this, "Failed to create user: ${it.message}", Toast.LENGTH_LONG)
                     .show()
             }
     }
 
     private fun uploadImageToFirebase() {
-        val fileName= UUID.randomUUID().toString()
+        val fileName = UUID.randomUUID().toString()
         val ref = FirebaseStorage.getInstance().getReference("/images/$fileName")
         selectedPhotoUri?.let { uri ->
             ref.putFile(uri)
                 .addOnSuccessListener {
-                    Log.d("MainActivity", "Successfully uploaded image : ${it.metadata?.path}")
+                    Log.d(LOG_TAG, "Successfully uploaded image : ${it.metadata?.path}")
                     ref.downloadUrl.addOnSuccessListener { downloadUrl ->
                         saveUserToDatabase(downloadUrl.toString())
                     }
@@ -88,14 +88,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun saveUserToDatabase(profileImageUrl: String) {
-        val uid =  FirebaseAuth.getInstance().uid
+        val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         uid?.let {
             val user = User(uid, userNameEditText.text.toString(), profileImageUrl)
             ref.setValue(user).addOnSuccessListener {
-                Log.d("MainActivity", "Successfully added user to firebase database")
+                Log.d(LOG_TAG, "Successfully added user to firebase database")
+                val intent = Intent(this, MessagesActivity::class.java)
+                startActivity(intent)
             }
         }
+    }
+
+    companion object {
+        const val LOG_TAG = "Register Activity"
     }
 }
 

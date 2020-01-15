@@ -9,4 +9,8 @@
     <string name="login">Login</string>
     <string name="noAccountExists">Don\'t have an Account? Register here!</string>
     <string name="selectPhoto">Select Photo</string>
+    <string name="new_message">New Message</string>
+    <string name="log_out">Log Out</string>
+    <string name="messages">Messages</string>
+    <string name="select_user">Select User</string>
 </resources>
