@@ -78,13 +78,8 @@ class RegisterActivity : AppCompatActivity() {
         val ref = FirebaseStorage.getInstance().getReference("/images/$fileName")
         selectedPhotoUri?.let { uri ->
             ref.putFile(uri)
-                .addOnSuccessListener {
-                    Log.d(LOG_TAG, "Successfully uploaded image : ${it.metadata?.path}")
-                    ref.downloadUrl.addOnSuccessListener { downloadUrl ->
-                        saveUserToDatabase(downloadUrl.toString())
-                    }
-                }
         }
+        saveUserToDatabase(ref.downloadUrl.toString())
     }
 
     private fun saveUserToDatabase(profileImageUrl: String) {
@@ -104,6 +99,3 @@ class RegisterActivity : AppCompatActivity() {
         const val LOG_TAG = "Register Activity"
     }
 }
-
-data class User(val userId: String, val userName: String, val profileImageUrl: String)
-

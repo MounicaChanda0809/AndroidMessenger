@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/gridSize"
+        android:layout_marginEnd="@dimen/gridSize">
+
+        <TextView
+            android:id="@+id/profilePictureTextView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/gridSize"
+            android:layout_marginBottom="@dimen/gridSize"
+            android:background="@drawable/rounded_button"
+            android:gravity="center"
+            android:textAppearance="@style/AppTheme.TextAppearance.Subheader"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry"
+            tools:text="M" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ProfilePicture"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/gridSize"
+            android:layout_marginBottom="@dimen/gridSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/UserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gridSize"
+            android:textAppearance="@style/AppTheme.TextAppearance.Subheader"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.046"
+            app:layout_constraintStart_toEndOf="@+id/ProfilePicture"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.304"
+            tools:text="Sample user" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
