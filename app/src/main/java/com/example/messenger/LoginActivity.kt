@@ -14,20 +14,23 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
         loginButton.setOnClickListener {
             val email = loginEmailEditText.text.toString()
             val password = loginPasswordEditText.text.toString()
-            firebaseAuth = FirebaseAuth.getInstance()
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val intent = Intent(this, MessagesActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
-                    finish()
+            if (email.isNotBlank() && password.isNotBlank()) {
+                firebaseAuth = FirebaseAuth.getInstance()
+                firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val intent = Intent(this, MessagesActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+                        Toast.makeText(this, "Login Failed", Toast.LENGTH_LONG).show()
+                        finish()
+                    }
                 }
+            } else {
+                Toast.makeText(this, "Email or Password is incorrect", Toast.LENGTH_LONG).show()
             }
         }
 

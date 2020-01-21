@@ -13,4 +13,6 @@
     <string name="log_out">Log Out</string>
     <string name="messages">Messages</string>
     <string name="select_user">Select User</string>
+    <string name="enter_message">Enter Message</string>
+    <string name="send">Send</string>
 </resources>

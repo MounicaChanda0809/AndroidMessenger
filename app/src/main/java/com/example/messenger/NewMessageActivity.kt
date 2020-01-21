@@ -1,5 +1,6 @@
 package com.example.messenger
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -10,11 +11,11 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_new_message.*
 
-class NewMessageActivity : AppCompatActivity() {
+class NewMessageActivity : AppCompatActivity(), NewUserActivityListener {
 
     private val usersList = mutableListOf<User>()
 
-    private val adapter = NewUserAdapter(mutableListOf())
+    private val adapter = NewUserAdapter(mutableListOf(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,11 @@ class NewMessageActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
         fetchUsersFromFireBase()
+    }
+
+    override fun onUserClicked() {
+        startActivity(Intent(this, ChatLogActivity::class.java))
+        finish()
     }
 
     private fun fetchUsersFromFireBase() {

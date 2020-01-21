@@ -36,10 +36,14 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/userName"
-            android:layout_width="wrap_content"
+            android:id="@+id/messageTextView"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gridSize"
+            android:layout_marginStart="@dimen/gridSizeHalf"
+            android:padding="12dp"
+            android:textColor="@color/white"
+            android:background="@drawable/rounded_corners"
             android:textAppearance="@style/AppTheme.TextAppearance.Subheader"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +51,7 @@
             app:layout_constraintStart_toEndOf="@+id/profilePicture"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.304"
-            tools:text="Sample user" />
+            tools:text="Sample Message" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
