@@ -1,10 +1,13 @@
-package com.example.messenger
+package com.example.messenger.messages
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.messenger.*
+import com.example.messenger.models.User
+import com.example.messenger.recyclerViewAdapters.NewUserAdapter
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -15,7 +18,8 @@ class NewMessageActivity : AppCompatActivity(), NewUserActivityListener {
 
     private val usersList = mutableListOf<User>()
 
-    private val adapter = NewUserAdapter(mutableListOf(), this)
+    private val adapter =
+        NewUserAdapter(mutableListOf(), this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +35,14 @@ class NewMessageActivity : AppCompatActivity(), NewUserActivityListener {
         fetchUsersFromFireBase()
     }
 
-    override fun onUserClicked() {
-        startActivity(Intent(this, ChatLogActivity::class.java))
+    companion object {
+        val USER_KEY= "USER_KEY"
+    }
+
+    override fun onUserClicked(userName: String) {
+        val intent = Intent(this, ChatLogActivity::class.java)
+        startActivity(intent)
+        intent.putExtra(USER_KEY, userName)
         finish()
     }
 

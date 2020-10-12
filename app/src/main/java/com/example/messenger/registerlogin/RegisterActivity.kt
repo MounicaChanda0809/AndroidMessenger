@@ -1,4 +1,4 @@
-package com.example.messenger
+package com.example.messenger.registerlogin
 
 import android.app.Activity
 import android.content.Intent
@@ -8,6 +8,9 @@ import android.provider.MediaStore.Images.Media.getBitmap
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.messenger.R
+import com.example.messenger.models.User
+import com.example.messenger.messages.LatestMessagesActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
@@ -86,10 +89,16 @@ class RegisterActivity : AppCompatActivity() {
         val uid = FirebaseAuth.getInstance().uid
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
         uid?.let {
-            val user = User(uid, userNameEditText.text.toString(), profileImageUrl)
+            val user =
+                User(
+                    uid,
+                    userNameEditText.text.toString(),
+                    profileImageUrl
+                )
             ref.setValue(user).addOnSuccessListener {
                 Log.d(LOG_TAG, "Successfully added user to firebase database")
-                val intent = Intent(this, MessagesActivity::class.java)
+                val intent = Intent(this, LatestMessagesActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
                 startActivity(intent)
             }
         }

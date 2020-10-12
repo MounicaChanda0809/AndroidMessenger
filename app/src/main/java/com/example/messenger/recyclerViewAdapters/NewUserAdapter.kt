@@ -1,9 +1,12 @@
-package com.example.messenger
+package com.example.messenger.recyclerViewAdapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.messenger.NewUserActivityListener
+import com.example.messenger.R
+import com.example.messenger.models.User
 import com.squareup.picasso.Picasso
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.user_row.view.*
@@ -51,7 +54,7 @@ class NewUserViewHolder(itemView: View, private val listener: NewUserActivityLis
         }
 
         itemView.setOnClickListener {
-            listener.onUserClicked()
+            listener.onUserClicked(user.userName)
         }
 
     }
