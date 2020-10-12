@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/gridSize"
-        android:layout_marginEnd="@dimen/gridSize">
+        android:layout_marginEnd="@dimen/gridSize"
+        android:layout_marginBottom="@dimen/gridSizeHalf">
 
         <TextView
             android:id="@+id/profilePictureTextView"
@@ -37,7 +38,7 @@
 
         <TextView
             android:id="@+id/messageTextView"
-            android:layout_width="240dp"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/gridSize"
             android:layout_marginStart="@dimen/gridSizeHalf"

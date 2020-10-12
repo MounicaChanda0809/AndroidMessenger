@@ -1,6 +1,6 @@
 package com.example.messenger
 
-interface MessagesActivityListener {
+interface LatestMessagesActivityListener {
 
     fun onMessageClicked()
 
@@ -8,6 +8,6 @@ interface MessagesActivityListener {
 
 interface NewUserActivityListener {
 
-    fun onUserClicked()
+    fun onUserClicked(userName: String)
 
 }
